@@ -1,19 +1,135 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WeatherBall™</title>
+<meta charset="UTF-8">
+<title>Weather Oracle 3000</title>
+
+<style>
+
+body{
+    background:black;
+    color:white;
+    margin:0;
+    font-family:Arial, sans-serif;
+}
+
+.wrapper{
+    width:100%;
+    max-width:1600px;
+    margin:auto;
+}
+
+.banner-container{
+    position:relative;
+    width:100%;
+}
+
+.banner{
+    width:100%;
+    display:block;
+}
+
+.sphere{
+    position:absolute;
+
+    right:7.5%;
+    top:13%;
+
+    width:34%;
+    aspect-ratio:1/1;
+
+    object-fit:contain;
+}
+
+.controls{
+    width:300px;
+    margin:40px auto;
+    text-align:center;
+}
+
+input[type=range]{
+    width:100%;
+}
+
+.day{
+    margin-top:10px;
+    font-size:18px;
+    letter-spacing:2px;
+}
+
+.description{
+    max-width:700px;
+    margin:50px auto;
+    text-align:center;
+    line-height:1.7;
+}
+
+</style>
 </head>
+
 <body>
 
-<h1>WeatherBall™</h1>
+<div class="wrapper">
 
-<img src="weatherball-poster.png" width="700">
+    <div class="banner-container">
 
-<p>
-An experimental weather divination device powered by future forecasting systems.
-</p>
+        <img
+            src="ORACLE.png"
+            class="banner"
+        >
 
-<a href="index.html">Back</a>
+        <img
+            id="sphere"
+            src="daily_weather/sphere_01.png"
+            class="sphere"
+        >
+
+    </div>
+
+    <div class="controls">
+
+        <input
+            type="range"
+            min="1"
+            max="14"
+            value="1"
+            id="slider"
+        >
+
+        <div id="dayLabel" class="day">
+            Day 1
+        </div>
+
+    </div>
+
+    <div class="description">
+
+        Weather Oracle 3000 is a speculative forecasting artifact.
+        Each sphere represents a generated weather future.
+
+    </div>
+
+</div>
+
+<script>
+
+const slider = document.getElementById("slider");
+const sphere = document.getElementById("sphere");
+const label = document.getElementById("dayLabel");
+
+slider.addEventListener("input", () => {
+
+    let day = String(slider.value).padStart(2,"0");
+
+    sphere.src =
+        `daily_weather/sphere_${day}.png`;
+
+    label.innerText =
+        `Day ${slider.value}`;
+
+});
+
+</script>
 
 </body>
 </html>
