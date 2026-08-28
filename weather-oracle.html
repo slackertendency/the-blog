@@ -1,82 +1,123 @@
-<div style="
-    max-width:900px;
-    margin:60px auto 40px auto;
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Weather Oracle 3000</title>
+
+<style>
+
+body{
+    background:black;
+    color:white;
+    margin:0;
+    font-family:Arial, sans-serif;
+}
+
+.wrapper{
+    width:100%;
+    max-width:1600px;
+    margin:auto;
+}
+
+.banner-container{
+    position:relative;
+    width:100%;
+}
+
+.banner{
+    width:100%;
+    display:block;
+}
+
+.controls{
+    width:300px;
+    margin:40px auto;
     text-align:center;
-">
+}
 
-    <video
-        autoplay
-        muted
-        loop
-        playsinline
-        controls
-        style="
-            width:320px;
-            max-width:90%;
-            height:auto;
-            display:block;
-            margin:0 auto 40px auto;
-        "
-    >
-        <source src="weather_gif.mov" type="video/quicktime">
-    </video>
+input[type=range]{
+    width:100%;
+}
 
-    <div style="
-        max-width:900px;
-        margin:0 auto;
-        text-align:center;
-        line-height:1.8;
-        font-size:18px;
-    ">
+.day{
+    margin-top:10px;
+    font-size:18px;
+    letter-spacing:2px;
+}
 
-        <p><strong>Weather Oracle 3000</strong> is a weather data visualization built entirely in TouchDesigner.
-        It fetches and visualizes local weather forecast data using noise shaders. Parameters like average temperature, humidity, precipitation, and wind speed are mapped to noise shaders, creating distinct patterns indicative of intensity, amount, and speed.</p>
+.description{
+    max-width:700px;
+    margin:50px auto;
+    text-align:center;
+    line-height:1.7;
+}
 
-        <p>The crystal ball analogy seemed fitting because weather is often difficult to predict accurately, even with modern-day computation. Too many variables constantly interact with each other like the ingredients of a soup.</p>
+.date-grid{
+    position:absolute;
+    left:140px;
+    top:700px;
 
-        <p>Historically, pseudoscientific prediction models like astrology originated in an attempt to predict and explain weather and related phenomena.</p>
+    display:grid;
+    grid-template-columns:repeat(4, auto);
+    gap:10px;
 
-        <p>In many parts of the world, even today, knowing what the weather will be like is akin to knowing your own future. For example, sufficient and timely rains lead to good crop yields and so on.</p>
+    z-index:20;
+}
 
-        <h2>Weather Lore</h2>
+.date-btn{
+    background:black;
+    border:1px solid white;
 
-        <p>The human brain is attuned to spotting patterns and weaving narratives around them. In many cultures, before the invention of devices like thermometers, weather lore similar to folklore in the form of proverbs emerged as an attempt to pass on collective oral knowledge about the weather.</p>
+    color:white;
 
-        <p>These would often be informal and region-specific.</p>
+    padding:8px 12px;
 
-        <p><em>When clouds look like black smoke<br>
-        A wise man will put on his cloak.</em></p>
+    font-family:monospace;
+    font-size:14px;
 
-        <p><em>January hot and April cold,<br>
-        Early floods by this are told (from Bengal).</em></p>
+    cursor:pointer;
 
-        <p><em>A rainbow in the east<br>
-        foretells rain enough to breach the tank.</em></p>
+    transition:all .15s ease;
+}
 
-        <p>
-        <a href="https://mausamjournal.imd.gov.in/index.php/MAUSAM/article/view/4772/4497" target="_blank">
-        This study
-        </a>,
-        done by the Meteorological Department of India in the 1950s to debunk regional weather lore with meteorological data, also serves as a fun documentation of the lore itself.
-        </p>
+.date-btn:hover{
+    background:white;
+    color:black;
+}
 
-        <h2>Process</h2>
+.date-btn.active{
+    background:white;
+    color:black;
+}
 
-        <p>I wanted to familiarize myself more with DATs in TouchDesigner and work with data sets. The goal was to be able to 'see' the weather and become more aware of my surroundings.</p>
+#weatherSphere{
+    position:absolute;
 
-        <p>In Goa, during the monsoon season, it is especially useful to be cognizant of when and how much it will rain. This year's rain levels in Goa have been quite low and sporadic.</p>
+    right:-14%;
+    top:-20%;
 
-        <p>I learned how to work with a weather API and parse JSON data in TouchDesigner. I started by fetching daily forecast data to derive weather parameters, but later switched to hourly forecasts to make the visualization feel more responsive.</p>
+    width:80%;
+    height:auto;
 
-        <p>I implemented a timer-driven API refresh that requests new weather data every 10 seconds, with a callback updating the visualization when the response arrives.</p>
+    z-index:10;
 
-        <p>I also ended up using an old phone as a dedicated display for the orb so I could see it more often. I used OBS and VDO.Ninja to make this possible.</p>
+    mix-blend-mode:screen;
+}
 
-        <p>I couldn't get the live weather orb to work on this blog page; to do that, I would have to convert everything to code, which seemed like too much work. So, I created a simple interactive interface below.</p>
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="description">
+
+        Weather Oracle 3000 is a speculative forecasting artifact.
+        Each sphere represents a generated weather future.
 
     </div>
 
-</div>
     <div class="banner-container">
 
         <img
@@ -152,8 +193,5 @@ dates.forEach((date,index)=>{
 </body>
 </html>
 
-
-       
-     
 
 
