@@ -111,12 +111,54 @@ input[type=range]{
 
 <div class="wrapper">
 
-    <div class="description">
+   <div class="description">
 
-        Weather Oracle 3000 is a speculative forecasting artifact.
-        Each sphere represents a generated weather future.
+    <p><strong>Weather Oracle 3000</strong> is a weather data visualization built entirely in TouchDesigner.
+    It fetches and visualizes local weather forecast data using noise shaders. Parameters like average temperature, humidity, precipitation, and wind speed are mapped to noise shaders, creating distinct patterns indicative of intensity, amount, and speed.</p>
 
-    </div>
+    <p>The crystal ball analogy seemed fitting because weather is often difficult to predict accurately, even with modern-day computation. Too many variables constantly interact with each other like the ingredients of a soup.</p>
+
+    <p>Historically, pseudoscientific prediction models like astrology originated in an attempt to predict and explain weather and related phenomena.</p>
+
+    <p>In many parts of the world, even today, knowing what the weather will be like is akin to knowing your own future. For example, sufficient and timely rains lead to good crop yields and so on.</p>
+
+    <h2>Weather Lore</h2>
+
+    <p>The human brain is attuned to spotting patterns and weaving narratives around them. In many cultures, before the invention of devices like thermometers, weather lore similar to folklore in the form of proverbs emerged as an attempt to pass on collective oral knowledge about the weather.</p>
+
+    <p>These would often be informal and region-specific.</p>
+
+    <p><em>When clouds look like black smoke<br>
+    A wise man will put on his cloak.</em></p>
+
+    <p><em>January hot and April cold,<br>
+    Early floods by this are told (from Bengal).</em></p>
+
+    <p><em>A rainbow in the east<br>
+    foretells rain enough to breach the tank.</em></p>
+
+    <p>
+        <a href="https://mausamjournal.imd.gov.in/index.php/MAUSAM/article/view/4772/4497" target="_blank">
+        This study
+        </a>,
+        done by the Meteorological Department of India in the 1950s to debunk regional weather lore with meteorological data, also serves as a fun documentation of the lore itself.
+    </p>
+
+    <h2>Process</h2>
+
+    <p>I wanted to familiarize myself more with DATs in TouchDesigner and work with data sets. The goal was to be able to ‘see’ the weather and become more aware of my surroundings.</p>
+
+    <p>In Goa, during the monsoon season, it is especially useful to be cognizant of when and how much it will rain! This year’s rain levels in Goa have been quite low and sporadic.</p>
+
+    <p>I learned how to work with a weather API and parse JSON data in TouchDesigner. I started by fetching daily forecast data to derive weather parameters, but later switched to hourly forecasts to make the visualization feel more responsive.</p>
+
+    <p>I implemented a timer-driven API refresh that requests new weather data every 10 seconds, with a callback updating the visualization when the response arrives.</p>
+
+    <p>I also ended up using an old phone as a dedicated display for the orb so I could see it more often. I used OBS and VDO.Ninja to make this possible.</p>
+
+    <p>I couldn’t get the live weather orb to work on this blog page; to do that, I would have to convert everything to code, which seemed like too much work. So, I created a simple interactive interface below.</p>
+
+</div>
 
     <div class="banner-container">
 
