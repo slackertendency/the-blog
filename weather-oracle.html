@@ -1,131 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Weather Oracle 3000</title>
-
-<style>
-
-body{
-    background:black;
-    color:white;
-    margin:0;
-    font-family:Arial, sans-serif;
-}
-
-.wrapper{
-    width:100%;
-    max-width:1600px;
-    margin:auto;
-}
-
-.banner-container{
-    position:relative;
-    width:100%;
-}
-
-.banner{
-    width:100%;
-    display:block;
-}
-
-.controls{
-    width:300px;
-    margin:40px auto;
-    text-align:center;
-}
-
-input[type=range]{
-    width:100%;
-}
-
-.day{
-    margin-top:10px;
-    font-size:18px;
-    letter-spacing:2px;
-}
-
-.description{
-    max-width:700px;
-    margin:50px auto;
-    text-align:center;
-    line-height:1.7;
-}
-
-.date-grid{
-    position:absolute;
-    left:140px;
-    top:700px;
-
-    display:grid;
-    grid-template-columns:repeat(4, auto);
-    gap:10px;
-
-    z-index:20;
-}
-
-.date-btn{
-    background:black;
-    border:1px solid white;
-
-    color:white;
-
-    padding:8px 12px;
-
-    font-family:monospace;
-    font-size:14px;
-
-    cursor:pointer;
-
-    transition:all .15s ease;
-}
-
-.date-btn:hover{
-    background:white;
-    color:black;
-}
-
-.date-btn.active{
-    background:white;
-    color:black;
-}
-
-#weatherSphere{
-    position:absolute;
-
-    right:-14%;
-    top:-20%;
-
-    width:80%;
-    height:auto;
-
-    z-index:10;
-
-    mix-blend-mode:screen;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="wrapper">
-
- <!-- ========================= -->
+<!-- ========================= -->
 <!-- PROJECT INTRO -->
 <!-- ========================= -->
 
+<style>
+
+.project-intro{
+    max-width:900px;
+    margin:60px auto 80px auto;
+    text-align:center;
+}
+
+.hero-video{
+    display:flex;
+    justify-content:center;
+    margin:0 auto 50px auto;
+}
+
+.hero-video video{
+    width:320px;
+    height:auto;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    display:block;
+}
+
+.project-text{
+    text-align:center;
+    line-height:1.9;
+    font-size:18px;
+    max-width:850px;
+    margin:auto;
+}
+
+.project-text h1{
+    margin-bottom:30px;
+}
+
+.project-text h2{
+    margin-top:60px;
+    margin-bottom:25px;
+}
+
+.project-text p{
+    margin-bottom:24px;
+}
+
+.project-text em{
+    font-style:italic;
+}
+
+</style>
+
+
 <div class="project-intro">
 
-    <div class="video-container">
+    <!-- VIDEO -->
 
-        <iframe
-            src="https://www.youtube.com/embed/4qnVNS0vhy8"
-            title="Weather Oracle 3000"
-            allowfullscreen>
-        </iframe>
+    <div class="hero-video">
+
+        <video
+            autoplay
+            muted
+            loop
+            playsinline>
+
+            <source
+                src="weather_giv.mov"
+                type="video/quicktime">
+
+        </video>
 
     </div>
+
+
+    <!-- TEXT -->
 
     <div class="project-text">
 
@@ -134,24 +83,23 @@ input[type=range]{
         <p>
         Weather Oracle 3000 is a weather data visualization built entirely in TouchDesigner.
         It fetches and visualizes local weather forecast data using noise shaders.
-        Parameters like average temperature, humidity, precipitation, and wind speed are mapped
-        to noise shaders, creating distinct patterns indicative of intensity, amount, and speed.
+        Parameters like average temperature, humidity, precipitation, and wind speed are mapped to noise shaders,
+        creating distinct patterns indicative of intensity, amount, and speed.
         </p>
 
         <p>
         The crystal ball analogy seemed fitting because weather is often difficult to predict accurately,
-        even with modern-day computation. Too many variables constantly interact with each other like
-        the ingredients of a soup.
+        even with modern-day computation. Too many variables constantly interact with each other like the ingredients of a soup.
         </p>
 
         <p>
-        Historically, pseudoscientific prediction models like astrology originated in an attempt to
-        predict and explain weather and related phenomena.
+        Historically, pseudoscientific prediction models like astrology originated in an attempt to predict
+        and explain weather and related phenomena.
         </p>
 
         <p>
-        In many parts of the world, even today, knowing what the weather will be like is akin to
-        knowing your own future.
+        In many parts of the world, even today, knowing what the weather will be like is akin to knowing your own future.
+        For example, sufficient and timely rains lead to good crop yields and so on.
         </p>
 
         <h2>Weather Lore</h2>
@@ -159,38 +107,57 @@ input[type=range]{
         <p>
         The human brain is attuned to spotting patterns and weaving narratives around them.
         In many cultures, before the invention of devices like thermometers,
-        weather lore emerged as an attempt to pass on collective oral knowledge about weather.
+        weather lore similar to folklore in the form of proverbs emerged as an attempt to pass on
+        collective oral knowledge about the weather.
         </p>
 
-        <p><em>When clouds look like black smoke<br>
-        A wise man will put on his cloak.</em></p>
-
-        <p><em>January hot and April cold,<br>
-        Early floods by this are told.</em></p>
-
-        <p><em>A rainbow in the east<br>
-        foretells rain enough to breach the tank.</em></p>
+        <p>
+        These would often be informal and region-specific.
+        </p>
 
         <p>
-        This project draws inspiration from those traditions while using contemporary weather data.
+        <em>
+        When clouds look like black smoke<br>
+        A wise man will put on his cloak.
+        </em>
+        </p>
+
+        <p>
+        <em>
+        January hot and April cold,<br>
+        Early floods by this are told.
+        </em>
+        </p>
+
+        <p>
+        <em>
+        A rainbow in the east<br>
+        foretells rain enough to breach the tank.
+        </em>
+        </p>
+
+        <p>
+        This project was partly inspired by these traditions and by a fascinating study from the
+        Meteorological Department of India in the 1950s that attempted to compare regional weather lore
+        with meteorological observations.
         </p>
 
         <h2>Process</h2>
 
         <p>
         I wanted to familiarize myself more with DATs in TouchDesigner and work with datasets.
-        The goal was to be able to "see" the weather and become more aware of my surroundings.
+        The goal was to be able to “see” the weather and become more aware of my surroundings.
         </p>
 
         <p>
         In Goa, during the monsoon season, it is especially useful to be cognizant of when and how much it will rain.
-        This year's rain levels have been quite low and sporadic.
+        This year’s rain levels in Goa have been quite low and sporadic.
         </p>
 
         <p>
         I learned how to work with a weather API and parse JSON data in TouchDesigner.
-        I started by fetching daily forecast data but later switched to hourly forecasts
-        to make the visualization feel more responsive.
+        I started by fetching daily forecast data to derive weather parameters,
+        but later switched to hourly forecasts to make the visualization feel more responsive.
         </p>
 
         <p>
@@ -204,128 +171,11 @@ input[type=range]{
         </p>
 
         <p>
-        I couldn't get the live weather orb to work on this blog page; to do that,
-        I would have had to convert everything to code, which seemed like too much work.
-        So I created a simplified interactive interface below.
+        I couldn’t get the live weather orb to work on this blog page; to do that,
+        I would have to convert everything to code, which seemed like too much work.
+        So, I created a simple interactive interface below.
         </p>
 
     </div>
 
 </div>
-
-<style>
-
-.project-intro{
-    max-width:900px;
-    margin:60px auto 80px auto;
-    text-align:center;
-}
-
-.video-container{
-    width:320px;
-    margin:0 auto 40px auto;
-}
-
-.video-container iframe{
-    width:320px;
-    height:570px;
-    border:none;
-}
-
-.project-text{
-    text-align:center;
-    line-height:1.8;
-    font-size:18px;
-}
-
-.project-text h1{
-    margin-bottom:30px;
-}
-
-.project-text h2{
-    margin-top:60px;
-}
-
-.project-text p{
-    margin-bottom:24px;
-}
-
-</style>
-
-
-    </div>
-
-    <div class="banner-container">
-
-        <img
-            src="ORACLE.png"
-            class="banner"
-        >
-
-        <img
-            id="weatherSphere"
-            src="daily_weather/sphere_01.png"
-            alt="Weather Sphere"
-        >
-
-        <div class="date-grid" id="dateGrid"></div>
-
-    </div>
-
-</div>
-
-<script>
-
-const sphere = document.getElementById("weatherSphere");
-const dateGrid = document.getElementById("dateGrid");
-
-const dates = [
-    "27-08-25",
-    "28-08-25",
-    "29-08-25",
-    "30-08-25",
-    "31-08-25",
-    "01-09-25",
-    "02-09-25",
-    "03-09-25",
-    "04-09-25",
-    "05-09-25",
-    "06-09-25",
-    "07-09-25",
-    "08-09-25",
-    "09-09-25"
-];
-
-dates.forEach((date,index)=>{
-
-    const btn = document.createElement("button");
-
-    btn.className = "date-btn";
-
-    if(index === 0){
-        btn.classList.add("active");
-    }
-
-    btn.textContent = date;
-
-    btn.addEventListener("click",()=>{
-
-        document
-            .querySelectorAll(".date-btn")
-            .forEach(b=>b.classList.remove("active"));
-
-        btn.classList.add("active");
-
-        sphere.src =
-            `daily_weather/sphere_${String(index+1).padStart(2,'0')}.png`;
-
-    });
-
-    dateGrid.appendChild(btn);
-
-});
-
-</script>
-
-</body>
-</html>
