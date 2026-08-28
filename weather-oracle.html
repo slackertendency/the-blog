@@ -90,109 +90,81 @@ input[type=range]{
         >
 
     </div>
-
-    <!-- ========================= -->
-<!-- WEATHER ORACLE KNOB UI -->
+<!-- ========================= -->
+<!-- WEATHER ORACLE DATE GRID -->
 <!-- ========================= -->
 
 <style>
-.oracle-controls{
+.date-grid{
     position:absolute;
-    left:170px;
-    top:240px;
+    left:80px;
+    top:250px;
+
+    display:grid;
+    grid-template-columns:repeat(4, auto);
+    gap:10px;
+
     z-index:20;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:12px;
 }
 
-.knob-wrapper{
-    width:90px;
-    height:90px;
-    position:relative;
-}
+.date-btn{
+    background:black;
+    border:1px solid white;
 
-#dayKnob{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    cursor:pointer;
-}
-
-.knob-wrapper::before{
-    content:'';
-    position:absolute;
-    inset:0;
-
-    border:2px solid white;
-    border-radius:50%;
-
-    background:
-    radial-gradient(
-        circle at center,
-        #444 0%,
-        #222 55%,
-        #111 100%
-    );
-}
-
-.knob-wrapper::after{
-    content:'';
-
-    position:absolute;
-
-    width:4px;
-    height:28px;
-
-    background:white;
-
-    left:50%;
-    top:10px;
-
-    transform:
-        translateX(-50%)
-        rotate(var(--rotation,-135deg));
-
-    transform-origin:center 35px;
-
-    transition:transform .15s ease;
-
-    pointer-events:none;
-}
-
-#dateLabel{
     color:white;
+
+    padding:8px 12px;
+
     font-family:monospace;
-    font-size:20px;
-    letter-spacing:2px;
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:all .15s ease;
+}
+
+.date-btn:hover{
+    background:white;
+    color:black;
+}
+
+.date-btn.active{
+    background:white;
+    color:black;
+}
+
+/* sphere */
+#weatherSphere{
+    position:absolute;
+
+    right:4%;
+    top:6%;
+
+    width:38%;
+    height:auto;
+
+    z-index:10;
+
+    mix-blend-mode:screen;
 }
 </style>
 
 
-<div class="oracle-controls">
+<!-- SPHERE -->
+<img
+    id="weatherSphere"
+    src="daily_weather/sphere_01.png"
+    alt="Weather Sphere"
+>
 
-    <div class="knob-wrapper">
-        <input
-            type="range"
-            id="dayKnob"
-            min="0"
-            max="13"
-            step="1"
-            value="0"
-        >
-    </div>
 
-    <div id="dateLabel">27-08-25</div>
-
-</div>
+<!-- DATE SELECTOR -->
+<div class="date-grid" id="dateGrid"></div>
 
 
 <script>
-const knob = document.getElementById("dayKnob");
-const label = document.getElementById("dateLabel");
 const sphere = document.getElementById("weatherSphere");
+const dateGrid = document.getElementById("dateGrid");
 
 const dates = [
     "27-08-25",
@@ -211,33 +183,41 @@ const dates = [
     "09-09-25"
 ];
 
-function updateWeather(){
+dates.forEach((date,index)=>{
 
-    const day = Number(knob.value);
+    const btn = document.createElement("button");
 
-    label.textContent = dates[day];
+    btn.className = "date-btn";
 
-    document
-        .querySelector('.knob-wrapper')
-        .style.setProperty(
-            '--rotation',
-            `${-135 + (day / 13) * 270}deg`
-        );
+    if(index === 0){
+        btn.classList.add("active");
+    }
 
-    sphere.src =
-        `daily_weather/sphere_${String(day + 1).padStart(2,'0')}.png`;
-}
+    btn.textContent = date;
 
-knob.addEventListener("input", updateWeather);
+    btn.addEventListener("click",()=>{
 
-updateWeather();
+        document
+            .querySelectorAll(".date-btn")
+            .forEach(b=>b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        sphere.src =
+            `daily_weather/sphere_${String(index+1).padStart(2,'0')}.png`;
+    });
+
+    dateGrid.appendChild(btn);
+
+});
 </script>
+ 
 
-        <div id="dayLabel" class="day">
-            Day 1
-        </div>
 
-    </div>
+
+
+
+
 
     <div class="description">
 
