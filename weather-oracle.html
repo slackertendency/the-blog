@@ -29,7 +29,6 @@ body{
     display:block;
 }
 
-
 .controls{
     width:300px;
     margin:40px auto;
@@ -53,28 +52,6 @@ input[type=range]{
     line-height:1.7;
 }
 
-</style>
-</head>
-
-<body>
-
-<div class="wrapper">
-
-    <div class="banner-container">
-
-        <img
-            src="ORACLE.png"
-            class="banner"
-        >
-
-        
-
-    </div>
-<!-- ========================= -->
-<!-- WEATHER ORACLE DATE GRID -->
-<!-- ========================= -->
-
-<style>
 .date-grid{
     position:absolute;
     left:140px;
@@ -113,7 +90,6 @@ input[type=range]{
     color:black;
 }
 
-/* sphere */
 #weatherSphere{
     position:absolute;
 
@@ -127,22 +103,42 @@ input[type=range]{
 
     mix-blend-mode:screen;
 }
+
 </style>
+</head>
 
+<body>
 
-<!-- SPHERE -->
-<img
-    id="weatherSphere"
-    src="daily_weather/sphere_01.png"
-    alt="Weather Sphere"
->
+<div class="wrapper">
 
+    <div class="description">
 
-<!-- DATE SELECTOR -->
-<div class="date-grid" id="dateGrid"></div>
+        Weather Oracle 3000 is a speculative forecasting artifact.
+        Each sphere represents a generated weather future.
 
+    </div>
+
+    <div class="banner-container">
+
+        <img
+            src="ORACLE.png"
+            class="banner"
+        >
+
+        <img
+            id="weatherSphere"
+            src="daily_weather/sphere_01.png"
+            alt="Weather Sphere"
+        >
+
+        <div class="date-grid" id="dateGrid"></div>
+
+    </div>
+
+</div>
 
 <script>
+
 const sphere = document.getElementById("weatherSphere");
 const dateGrid = document.getElementById("dateGrid");
 
@@ -185,44 +181,10 @@ dates.forEach((date,index)=>{
 
         sphere.src =
             `daily_weather/sphere_${String(index+1).padStart(2,'0')}.png`;
+
     });
 
     dateGrid.appendChild(btn);
-
-});
-</script>
- 
-
-
-
-
-
-
-
-    <div class="description">
-
-        Weather Oracle 3000 is a speculative forecasting artifact.
-        Each sphere represents a generated weather future.
-
-    </div>
-
-</div>
-
-<script>
-
-const slider = document.getElementById("slider");
-const sphere = document.getElementById("sphere");
-const label = document.getElementById("dayLabel");
-
-slider.addEventListener("input", () => {
-
-    let day = String(slider.value).padStart(2,"0");
-
-    sphere.src =
-        `daily_weather/sphere_${day}.png`;
-
-    label.innerText =
-        `Day ${slider.value}`;
 
 });
 
