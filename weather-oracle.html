@@ -91,15 +91,147 @@ input[type=range]{
 
     </div>
 
-    <div class="controls">
+    <!-- ========================= -->
+<!-- WEATHER ORACLE KNOB UI -->
+<!-- ========================= -->
 
+<style>
+.oracle-controls{
+    position:absolute;
+    left:170px;
+    top:240px;
+    z-index:20;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+}
+
+.knob-wrapper{
+    width:90px;
+    height:90px;
+    position:relative;
+}
+
+#dayKnob{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    cursor:pointer;
+}
+
+.knob-wrapper::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    border:2px solid white;
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle at center,
+        #444 0%,
+        #222 55%,
+        #111 100%
+    );
+}
+
+.knob-wrapper::after{
+    content:'';
+
+    position:absolute;
+
+    width:4px;
+    height:28px;
+
+    background:white;
+
+    left:50%;
+    top:10px;
+
+    transform:
+        translateX(-50%)
+        rotate(var(--rotation,-135deg));
+
+    transform-origin:center 35px;
+
+    transition:transform .15s ease;
+
+    pointer-events:none;
+}
+
+#dateLabel{
+    color:white;
+    font-family:monospace;
+    font-size:20px;
+    letter-spacing:2px;
+}
+</style>
+
+
+<div class="oracle-controls">
+
+    <div class="knob-wrapper">
         <input
             type="range"
-            min="1"
-            max="14"
-            value="1"
-            id="slider"
+            id="dayKnob"
+            min="0"
+            max="13"
+            step="1"
+            value="0"
         >
+    </div>
+
+    <div id="dateLabel">27-08-25</div>
+
+</div>
+
+
+<script>
+const knob = document.getElementById("dayKnob");
+const label = document.getElementById("dateLabel");
+const sphere = document.getElementById("weatherSphere");
+
+const dates = [
+    "27-08-25",
+    "28-08-25",
+    "29-08-25",
+    "30-08-25",
+    "31-08-25",
+    "01-09-25",
+    "02-09-25",
+    "03-09-25",
+    "04-09-25",
+    "05-09-25",
+    "06-09-25",
+    "07-09-25",
+    "08-09-25",
+    "09-09-25"
+];
+
+function updateWeather(){
+
+    const day = Number(knob.value);
+
+    label.textContent = dates[day];
+
+    document
+        .querySelector('.knob-wrapper')
+        .style.setProperty(
+            '--rotation',
+            `${-135 + (day / 13) * 270}deg`
+        );
+
+    sphere.src =
+        `daily_weather/sphere_${String(day + 1).padStart(2,'0')}.png`;
+}
+
+knob.addEventListener("input", updateWeather);
+
+updateWeather();
+</script>
 
         <div id="dayLabel" class="day">
             Day 1
