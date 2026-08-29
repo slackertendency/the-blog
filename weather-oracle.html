@@ -54,11 +54,7 @@ input[type=range]{
     line-height:1.8;
     font-size:16px;
 }
-
-
-
-
-
+    
 
 .date-grid{
     position:absolute;
@@ -96,6 +92,13 @@ input[type=range]{
 .date-btn.active{
     background:white;
     color:black;
+}
+    #coordinates{
+    position:absolute;
+    left:140px;
+    top:620px;
+    width:320px;
+    z-index:20;
 }
 
 #weatherSphere{
@@ -259,6 +262,11 @@ input[type=range]{
             src="daily_weather/sphere_01.png"
             alt="Weather Sphere"
         >
+        <img
+        id="coordinates"
+        src="coordinates.png"
+        alt="Location coordinates"
+    >
 
         <div class="date-grid" id="dateGrid"></div>
 
